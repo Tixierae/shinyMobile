@@ -52,9 +52,9 @@ $((function() {
         $("#ss-connect-dialog").hide();
         $("#ss-overlay").hide();
         var reconnectToast = app.toast.create({
-            icon: '<i class="icon f7-icons">bolt_fill</i>',
+            icon: '<i class="icon f7-icons">moon_zzz</i>',
             position: "center",
-            text: 'Oups... disconnected </br> </br> <div class="row"><button onclick="Shiny.shinyapp.reconnect();" class="toast-button button color-green col">Reconnect</button><button onclick="location.reload();" class="toast-button button color-red col">Reload</button></div>'
+            text: 'Sleeping...</br> </br> <div class="display-flex"><div class="align-self-center"><button onclick="location.reload();" class="toast-button button">Wake</button></div></div>'
         }).open();
         $(".toast-button").on("click", (function() {
             reconnectToast.close();
