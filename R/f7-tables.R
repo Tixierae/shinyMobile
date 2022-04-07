@@ -32,7 +32,7 @@
 f7Table <- function(data, colnames = NULL, card = FALSE){
   classes <- lapply(data, class2f7)
   
-  if (FALSE){
+  
     if(is.null(colnames))
       colnames <- names(classes)
 
@@ -50,7 +50,7 @@ f7Table <- function(data, colnames = NULL, card = FALSE){
     headers <- lapply(headers, function(x){
       shiny::tags$th(class = x$class, x$colname)
     })
-  }
+  
 
   data_list <- split(data, seq(nrow(data)))
   data_list <- lapply(data_list, as.list)
