@@ -31,24 +31,26 @@
 #' @export
 f7Table <- function(data, colnames = NULL, card = FALSE){
   classes <- lapply(data, class2f7)
+  
+  if (FALSE){
+    if(is.null(colnames))
+      colnames <- names(classes)
 
-  if(is.null(colnames))
-    colnames <- names(classes)
+    if(length(colnames) != length(classes))
+      stop("The number of `colnames` must match the number of columns of `data`", call. = FALSE)
 
-  if(length(colnames) != length(classes))
-    stop("The number of `colnames` must match the number of columns of `data`", call. = FALSE)
+    headers <- list()
+    for(i in 1:length(colnames)){
+      headers[[i]] <- list(
+        class = classes[[i]],
+        colname = colnames[[i]]
+      )
+    }
 
-  headers <- list()
-  for(i in 1:length(colnames)){
-    headers[[i]] <- list(
-      class = classes[[i]],
-      colname = colnames[[i]]
-    )
+    headers <- lapply(headers, function(x){
+      shiny::tags$th(class = x$class, x$colname)
+    })
   }
-
-  headers <- lapply(headers, function(x){
-    shiny::tags$th(class = x$class, x$colname)
-  })
 
   data_list <- split(data, seq(nrow(data)))
   data_list <- lapply(data_list, as.list)
@@ -68,9 +70,9 @@ f7Table <- function(data, colnames = NULL, card = FALSE){
   shiny::div(
     class = cl,
     shiny::tags$table(
-      shiny::tags$thead(
-        shiny::tags$tr(headers)
-      ),
+      #shiny::tags$thead(
+        #shiny::tags$tr(headers)
+      #),
       shiny::tags$tbody(table)
     )
   )
