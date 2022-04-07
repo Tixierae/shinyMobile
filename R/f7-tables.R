@@ -57,7 +57,7 @@ f7Table <- function(data, colnames = NULL, card = FALSE){
 
   table <- lapply(data_list, function(row){
     r <- lapply(row, function(cell){
-      shiny::tags$th(class = class2f7(cell), cell)
+      shiny::tags$th(cell) # class = class2f7(cell), 
     })
     shiny::tags$tr(r)
   })
